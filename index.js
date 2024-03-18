@@ -98,7 +98,7 @@
   
 
     const UserFind = await client
-        .db("CURD")
+        .db("CRUD")
         .collection("private").findOne({email:email});
    
 
@@ -109,7 +109,7 @@
         const HashedPassword = await bcrypt.hash(password,salt);
         
         const registerMethod = await client
-        .db("CURD")
+        .db("CRUD")
         .collection("private")
         .insertOne({username:username , email:email , password:HashedPassword});
         res.status(201).send(registerMethod);
@@ -119,7 +119,7 @@
     app.post("/login" ,async(req ,res)=>{
         const {email ,password} = req.body;
 
-        const UserFind = await client.db("CURD").collection("private").findOne({email:email})
+        const UserFind = await client.db("CRUD").collection("private").findOne({email:email})
 
         if(UserFind){
             const mongoDBpassword =UserFind.password;
@@ -135,10 +135,10 @@
 
             else
             {
-                res.status(400).send("Invalid Password")
+                res.status(400).send({message:"Invalid Password"})
             }
         }else{
-            res.status(400).send("Invalid email")
+            res.status(400).send({message:"Invalid email"})
         }
 
     } )
