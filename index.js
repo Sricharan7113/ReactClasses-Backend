@@ -13,7 +13,7 @@
 
     app.use(express.json());
     app.use(cors({
-        origin:"*" //this backend deployed URL can be accessed with any deployed URL 
+        origin:"https://react-ie9xsmsim-sricharan7113s-projects.vercel.app/" //this backend deployed URL can be accessed with any deployed URL 
         //replace '*' with your frontend URL o that it could be accessed only by you.
     }));
 
