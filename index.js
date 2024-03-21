@@ -12,7 +12,10 @@
     console.log("database connected successfully");
 
     app.use(express.json());
-    app.use(cors());
+    app.use(cors({
+        origin:"*" //this backend deployed URL can be accessed with any deployed URL 
+        //replace '*' with your frontend URL o that it could be accessed only by you.
+    }));
 
     const Auth = ((req, res , next)=>{
         try{
